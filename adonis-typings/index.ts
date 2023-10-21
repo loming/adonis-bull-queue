@@ -35,7 +35,15 @@ declare module '@ioc:Loming/Queue' {
 			options?: DispatchOptions
 		): Promise<Job>;
 		process(): Promise<void>;
-		waitUntilFinished(job: Job, queueName?: string): Promise<any>;
+		waitUntilFinished({
+			job,
+			queueName,
+			timeOut = 1000 * 60 * 10,
+		}: {
+			job: Job;
+			queueName?: string;
+			timeOut?: number;
+		}): Promise<any>;
 		clear<K extends string>(queue: K): Promise<void>;
 		list(): Promise<Map<string, BullQueue>>;
 		get(): Promise<BullQueue>;
