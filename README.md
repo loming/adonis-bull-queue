@@ -1,14 +1,14 @@
 <p align="center">
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/2793951/249391043-4d65a757-b8cb-47de-b197-774df2cf0837.png" alt="@rlanz/bull-queue">
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/2793951/249391043-4d65a757-b8cb-47de-b197-774df2cf0837.png" alt="@loming/bull-queue">
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@rlanz/bull-queue"><img src="https://img.shields.io/npm/dm/@rlanz/bull-queue.svg?style=flat-square" alt="Download"></a>
-  <a href="https://www.npmjs.com/package/@rlanz/bull-queue"><img src="https://img.shields.io/npm/v/@rlanz/bull-queue.svg?style=flat-square" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/@loming/bull-queue"><img src="https://img.shields.io/npm/dm/@rlanz/bull-queue.svg?style=flat-square" alt="Download"></a>
+  <a href="https://www.npmjs.com/package/@loming/bull-queue"><img src="https://img.shields.io/npm/v/@rlanz/bull-queue.svg?style=flat-square" alt="Version"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/@rlanz/bull-queue.svg?style=flat-square" alt="License"></a>
 </p>
 
-`@rlanz/bull-queue` is a queue system based on [BullMQ](https://github.com/taskforcesh/bullmq)
+A fork from the `@rlanz/bull-queue`. Since we have different handling on the job's returning data. `@rlanz/bull-queue` is a queue system based on [BullMQ](https://github.com/taskforcesh/bullmq)
 for [AdonisJS](https://adonisjs.com/).
 
 > **Note**
@@ -22,13 +22,13 @@ for [AdonisJS](https://adonisjs.com/).
 This package is available in the npm registry.
 
 ```bash
-npm install @rlanz/bull-queue
+npm install @loming/bull-queue
 ```
 
 Next, configure the package by running the following command.
 
 ```bash
-node ace configure @rlanz/bull-queue
+node ace configure @loming/bull-queue
 ```
 
 and... Voilà!
@@ -39,7 +39,7 @@ The `Queue` provider gives you access to the `dispatch` method.
 It will dispatch the linked job to the queue with the given payload.
 
 ```ts
-import { Queue } from '@ioc:Rlanz/Queue';
+import { Queue } from '@ioc:Loming/Queue';
 
 Queue.dispatch('App/Jobs/RegisterStripeCustomer', {...});
 
@@ -61,7 +61,7 @@ Example job file:
 
 ```ts
 // app/Jobs/RegisterStripeCustomer.ts
-import type { JobHandlerContract, Job } from '@ioc:Rlanz/Queue';
+import type { JobHandlerContract, Job } from '@ioc:Loming/Queue';
 
 export type RegisterStripeCustomerPayload = {
   userId: string;
@@ -147,7 +147,7 @@ You can define the payload's type for a given job inside the `contracts/queue.ts
 ```ts
 import type { RegisterStripeCustomerPayload } from 'App/Jobs/RegisterStripeCustomer';
 
-declare module '@ioc:Rlanz/Queue' {
+declare module '@ioc:Loming/Queue' {
   interface JobsList {
     'App/Jobs/RegisterStripeCustomer': RegisterStripeCustomerPayload;
   }

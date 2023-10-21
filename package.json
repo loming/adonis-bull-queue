@@ -1,15 +1,15 @@
 {
-  "name": "@rlanz/bull-queue",
-  "version": "1.0.6",
+  "name": "@loming/bull-queue",
+  "version": "1.0.9",
   "description": "Queue system based on BullMQ for AdonisJS",
-  "homepage": "https://github.com/romainlanz/adonis-bull-queue#readme",
+  "homepage": "https://github.com/loming/adonis-bull-queue#readme",
   "license": "MIT",
   "keywords": [
     "adonisjs",
     "bullmq",
     "queue"
   ],
-  "author": "Romain Lanz <romain.lanz@pm.me>",
+  "author": "Ming Lo <loming@loming.com>",
   "main": "build/providers/QueueProvider.js",
   "files": [
     "build/adonis-typings",
@@ -50,20 +50,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/romainlanz/adonis-bull-queue.git"
+    "url": "git+https://github.com/loming/adonis-bull-queue.git"
   },
   "bugs": {
-    "url": "https://github.com/romainlanz/adonis-bull-queue/issues"
+    "url": "https://github.com/loming/adonis-bull-queue/issues"
   },
   "adonisjs": {
     "instructions": "./build/instructions.js",
     "instructionsMd": "./build/instructions.md",
-    "types": "@rlanz/bull-queue",
+    "types": "@loming/bull-queue",
     "providers": [
-      "@rlanz/bull-queue"
+      "@loming/bull-queue"
     ],
     "commands": [
-      "@rlanz/bull-queue/build/commands"
+      "@loming/bull-queue/build/commands"
     ],
     "templates": {
       "basePath": "./build/templates",

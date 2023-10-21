@@ -1,12 +1,12 @@
 /**
- * @rlanz/bull-queue
+ * @loming/bull-queue
  *
  * @license MIT
- * @copyright Romain Lanz <romain.lanz@pm.me>
+ * @copyright Ming Lo <loming@loming.com>
  */
 
 export default [
-	'@rlanz/bull-queue/build/commands/QueueListener',
-	'@rlanz/bull-queue/build/commands/QueueClear',
-	'@rlanz/bull-queue/build/commands/MakeJob',
+	'@loming/bull-queue/build/commands/QueueListener',
+	'@loming/bull-queue/build/commands/QueueClear',
+	'@loming/bull-queue/build/commands/MakeJob',
 ];

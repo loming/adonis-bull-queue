@@ -1,8 +1,8 @@
 /**
- * @rlanz/bull-queue
+ * @loming/bull-queue
  *
  * @license MIT
- * @copyright Romain Lanz <romain.lanz@pm.me>
+ * @copyright Ming Lo <loming@loming.com>
  */
 
 import { join } from 'node:path';

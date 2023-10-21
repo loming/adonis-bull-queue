@@ -1,4 +1,4 @@
-declare module '@ioc:Rlanz/Queue' {
+declare module '@ioc:Loming/Queue' {
   interface JobsList {
   }
 }

@@ -1,11 +1,11 @@
 /**
- * @rlanz/bull-queue
+ * @loming/bull-queue
  *
  * @license MIT
  * @copyright Romain Lanz <romain.lanz@pm.me>
  */
 
-declare module '@ioc:Rlanz/Queue' {
+declare module '@ioc:Loming/Queue' {
 	import type { ConnectionOptions, WorkerOptions, QueueOptions, JobsOptions, Job, Queue as BullQueue } from 'bullmq';
 
 	export type DataForJob<K extends string> = K extends keyof JobsList
@@ -35,13 +35,14 @@ declare module '@ioc:Rlanz/Queue' {
 			options?: DispatchOptions
 		): Promise<Job>;
 		process(): Promise<void>;
+		waitUntilFinished(job: Job, queueName?: string): Promise<any>;
 		clear<K extends string>(queue: K): Promise<void>;
 		list(): Promise<Map<string, BullQueue>>;
 		get(): Promise<BullQueue>;
 	}
 
 	export interface JobHandlerContract {
-		handle(payload: any): Promise<void>;
+		handle(payload: any): Promise<any>;
 		failed(): Promise<void>;
 	}
 

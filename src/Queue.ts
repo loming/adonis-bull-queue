@@ -1,15 +1,15 @@
 /**
- * @rlanz/bull-queue
+ * @loming/bull-queue
  *
  * @license MIT
  * @copyright Romain Lanz <romain.lanz@pm.me>
  */
 
-import { Queue, Worker } from 'bullmq';
+import { Queue, QueueEvents, Worker } from 'bullmq';
 import type { JobsOptions } from 'bullmq';
 import type { LoggerContract } from '@ioc:Adonis/Core/Logger';
 import type { ApplicationContract } from '@ioc:Adonis/Core/Application';
-import type { DataForJob, JobsList, QueueConfig } from '@ioc:Rlanz/Queue';
+import type { DataForJob, Job, JobsList, QueueConfig } from '@ioc:Loming/Queue';
 
 export class BullManager {
 	private queues: Map<string, Queue> = new Map();
@@ -51,6 +51,26 @@ export class BullManager {
 		});
 	}
 
+	public async waitUntilFinished({
+		job,
+		queueName,
+		timeOut = 1000 * 60 * 10,
+	}: {
+		job: Job;
+		queueName?: string;
+		timeOut?: number;
+	}) {
+		const queueEvent = new QueueEvents(queueName || 'default', {
+			connection: this.options.connection,
+			autorun: true,
+		});
+		const result = await job.waitUntilFinished(queueEvent, timeOut);
+		job.remove();
+		queueEvent.close();
+
+		return result;
+	}
+
 	public process({ queueName }: { queueName?: string }) {
 		this.logger.info(`Queue [${queueName || 'default'}] processing started...`);
 
@@ -68,8 +88,11 @@ export class BullManager {
 
 				this.logger.info(`Job ${job.name} started`);
 
-				await jobHandler.handle(job.data);
+				const result = await jobHandler.handle(job.data);
+
 				this.logger.info(`Job ${job.name} finished`);
+
+				return result;
 			},
 			{
 				connection: this.options.connection,
@@ -116,5 +139,3 @@ export class BullManager {
 		return this.queues.get(queueName);
 	}
 }
-
-

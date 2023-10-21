@@ -1,5 +1,5 @@
 /**
- * @rlanz/bull-queue
+ * @lomimng/bull-queue
  *
  * @license MIT
  * @copyright Romain Lanz <romain.lanz@pm.me>

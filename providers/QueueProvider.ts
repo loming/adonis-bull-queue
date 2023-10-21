@@ -1,5 +1,5 @@
 /**
- * @rlanz/bull-queue
+ * @loming/bull-queue
  *
  * @license MIT
  * @copyright Romain Lanz <romain.lanz@pm.me>
@@ -12,7 +12,7 @@ export default class QueueProvider {
 	constructor(protected app: ApplicationContract) {}
 
 	public register() {
-		this.app.container.singleton('Rlanz/Queue', () => {
+		this.app.container.singleton('Loming/Queue', () => {
 			const config = this.app.container.resolveBinding('Adonis/Core/Config').get('queue').config;
 			const logger = this.app.container.resolveBinding('Adonis/Core/Logger');
 			const application = this.app.container.resolveBinding('Adonis/Core/Application');

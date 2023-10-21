@@ -1,5 +1,5 @@
 import Env from '@ioc:Adonis/Core/Env'
-import type { QueueConfig } from '@ioc:Rlanz/Queue'
+import type { QueueConfig } from '@ioc:Loming/Queue'
 
 const queueConfig: QueueConfig = {
   connection: {
