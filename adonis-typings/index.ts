@@ -44,9 +44,9 @@ declare module '@ioc:Loming/Queue' {
 			queueName?: string;
 			timeOut?: number;
 		}): Promise<any>;
-		clear<K extends string>(queue: K): Promise<void>;
+		clear(queueName?: string): Promise<void>;
 		list(): Promise<Map<string, BullQueue>>;
-		get(): Promise<BullQueue>;
+		get(queueName?: string): BullQueue;
 	}
 
 	export interface JobHandlerContract {

@@ -1,6 +1,6 @@
 {
   "name": "@loming/bull-queue",
-  "version": "1.0.10",
+  "version": "1.0.13",
   "description": "Queue system based on BullMQ for AdonisJS",
   "homepage": "https://github.com/loming/adonis-bull-queue#readme",
   "license": "MIT",

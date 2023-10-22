@@ -64,6 +64,7 @@ export class BullManager {
 			connection: this.options.connection,
 			autorun: true,
 		});
+
 		const result = await job.waitUntilFinished(queueEvent, timeOut);
 		job.remove();
 		queueEvent.close();
@@ -115,12 +116,12 @@ export class BullManager {
 		return this;
 	}
 
-	public async clear<K extends string>(queueName: K) {
+	public async clear(queueName: string = 'default') {
 		if (!this.queues.has(queueName)) {
 			return this.logger.info(`Queue [${queueName}] doesn't exist`);
 		}
 
-		const queue = this.queues.get(queueName || 'default');
+		const queue = this.queues.get(queueName);
 
 		await queue!.obliterate().then(() => {
 			return this.logger.info(`Queue [${queueName}] cleared`);
@@ -131,7 +132,7 @@ export class BullManager {
 		return this.queues;
 	}
 
-	public get<K extends string>(queueName: K) {
+	public get(queueName: string = 'default') {
 		if (!this.queues.has(queueName)) {
 			return this.logger.info(`Queue [${queueName}] doesn't exist`);
 		}
